@@ -6,7 +6,7 @@ const params=new URLSearchParams(location.search),turma=params.get('turma'),chav
  const nome=document.createElement('strong');nome.textContent=a.nome;
  const ra=document.createElement('span');ra.textContent='RA: '+a.ra;
  top.append(nome,ra);
- const img=document.createElement('img');img.src='/informativo-base.svg';img.alt='Informativo de acesso do Senac';img.loading='eager';
+ const img=document.createElement('img');img.src='/informativo-original-senac.png';img.alt='Informativo de acesso do Senac';img.loading='eager';
  card.append(top,img);
  const botao=document.createElement('button');botao.textContent='Baixar meu informativo em imagem';
  botao.addEventListener('click',async()=>{
