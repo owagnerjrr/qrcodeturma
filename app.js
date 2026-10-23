@@ -8,6 +8,28 @@ const params=new URLSearchParams(location.search),turma=params.get('turma'),chav
  top.append(nome,ra);
  const img=document.createElement('img');img.src='/informativo-original-senac.png';img.alt='Informativo de acesso do Senac';img.loading='eager';
  card.append(top,img);
+ card.title='Toque para ampliar o informativo';
+ card.style.cursor='zoom-in';
+ card.setAttribute('role','button');card.setAttribute('tabindex','0');
+ card.setAttribute('aria-label','Ampliar informativo');
+ const overlay=document.createElement('div');
+ overlay.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.94);display:none;overflow:auto;padding:55px 10px 20px;box-sizing:border-box;text-align:center';
+ const fechar=document.createElement('button');fechar.textContent='✕ Fechar';
+ fechar.style.cssText='position:fixed;top:10px;right:12px;z-index:10000;background:#fff;color:#173d66;border:0;border-radius:9px;padding:10px 18px;font-size:17px';
+ const ampliado=card.cloneNode(true);
+ ampliado.removeAttribute('role');ampliado.removeAttribute('tabindex');
+ ampliado.style.cssText='cursor:default;width:min(100%,900px);margin:0 auto;background:white;border-radius:10px;overflow:hidden;text-align:center';
+ const legenda=document.createElement('p');legenda.textContent='Toque fora da imagem ou em Fechar para voltar';
+ legenda.style.cssText='color:white;margin:12px auto';
+ overlay.append(fechar,ampliado,legenda);
+ const fecharZoom=()=>{overlay.style.display='none';document.body.style.overflow='';};
+ const abrirZoom=()=>{document.body.append(overlay);overlay.style.display='block';document.body.style.overflow='hidden';};
+ card.addEventListener('click',abrirZoom);
+ card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();abrirZoom()}});
+ fechar.addEventListener('click',fecharZoom);
+ overlay.addEventListener('click',e=>{if(e.target===overlay)fecharZoom()});
+ overlay.addEventListener('keydown',e=>{if(e.key==='Escape')fecharZoom()});
+
  const botao=document.createElement('button');botao.textContent='Baixar meu informativo em imagem';
  botao.addEventListener('click',async()=>{
   botao.disabled=true;
