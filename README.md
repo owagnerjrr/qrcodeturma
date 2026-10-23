@@ -19,3 +19,5 @@ Site estático com funções serverless na Vercel. Os dados reais **não devem s
 A busca por nomes é apenas uma prova de conceito: nomes de alunos podem ser expostos a quem tiver o link. **Não habilite dados de alunos sem validação institucional e autorização adequada.** Apenas selecionar um nome não autentica ninguém. O RA e quaisquer senhas individuais **não são retornados por esta versão**. Para revelar o RA no informativo, implemente uma verificação de identidade aprovada pela instituição. Não armazene senhas nem informações sensíveis em repositórios públicos, JavaScript do navegador ou imagens públicas.
 
 Para o piloto, recomenda-se usar somente dados fictícios até a aprovação de proteção de dados. A lista real pode ser importada para armazenamento privado após aprovação.
+
+Primeiro teste de publicação.
